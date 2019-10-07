@@ -94,7 +94,7 @@ int main()
             }
         }
     }
-    printf("初始温度场为:");
+    printf("初始温度场为(保留两位小数):");
     print_array(temps);
 
     /*做一个矩阵副本用于计算迭代前后的误差*/
@@ -132,10 +132,10 @@ int main()
         }
         counter++;
     }
-    printf("\n最终温度场为:");
+    printf("\n最终温度场为(保留两位小数):");
     print_array(temps);
     printf("\n迭代次数为:%d\n", counter);
-    printf("本次迭代所设的收敛误差限为:%f", MAX_DEVIATION);
+    printf("收敛误差限为:%f\n", MAX_DEVIATION);
 
     //save_csv(temps); //保存为csv文件，文件名为F_PATH去掉注释即可保存
 }
