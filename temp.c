@@ -1,13 +1,13 @@
-/*æœ¬ç¨‹åºç”¨äºè¿­ä»£è®¡ç®—äºŒä½å¹³æ¿æ¸©åº¦åˆ†å¸ƒå…¶ä¸­ç½‘æ ¼åˆ’åˆ†å¿…é¡»æ»¡è¶³Î”x=Î”y*/
+/*±¾³ÌĞòÓÃÓÚµü´ú¼ÆËã¶şÎ»Æ½°åÎÂ¶È·Ö²¼ÆäÖĞÍø¸ñ»®·Ö±ØĞëÂú×ã¦¤x=¦¤y*/
 
 #include <stdio.h>
 #include <math.h>
-#define X 7                    //å®šä¹‰æ°´å¹³åˆ’åˆ†X-1ä¸ªç½‘æ ¼
-#define Y 7                    //å®šä¹‰å‚ç›´åˆ’åˆ†Y-1ä¸ªç½‘æ ¼
-#define MAX_DEVIATION 0.000001 //å®šä¹‰æœ€å¤§è¯¯å·®
-#define F_PATH "./file.csv"    //å¯é€‰ä¿å­˜çš„csvæ–‡ä»¶åŠä½ç½®
+#define X 7                    //¶¨ÒåË®Æ½»®·ÖX-1¸öÍø¸ñ
+#define Y 7                    //¶¨Òå´¹Ö±»®·ÖY-1¸öÍø¸ñ
+#define MAX_DEVIATION 0.000001 //¶¨Òå×î´óÎó²î
+#define F_PATH "./file.csv"    //¿ÉÑ¡±£´æµÄcsvÎÄ¼ş¼°Î»ÖÃ
 
-/*ä¼ å…¥æ•°ç»„è¿”å›å…¶ä¸­çš„æœ€å¤§å€¼*/
+/*´«ÈëÊı×é·µ»ØÆäÖĞµÄ×î´óÖµ*/
 double get_max(double deviations[X - 2][Y - 2])
 {
     double max = deviations[0][0];
@@ -25,7 +25,7 @@ double get_max(double deviations[X - 2][Y - 2])
     return max;
 }
 
-/*æ‰“å°X*Yçš„æ•°ç»„*/
+/*´òÓ¡X*YµÄÊı×é*/
 void print_array(double temps[X][Y])
 {
     int i, j;
@@ -34,12 +34,12 @@ void print_array(double temps[X][Y])
         printf("\n");
         for (j = 0; j < Y; j++)
         {
-            printf("%f\t", temps[i][j]);
+            printf("%.2f\t", temps[i][j]);
         }
     }
 }
 
-/*å°†X*Yçš„æ•°ç»„è¾“å‡ºåˆ°æ–‡ä»¶F_PATHä¸­*/
+/*½«X*YµÄÊı×éÊä³öµ½ÎÄ¼şF_PATHÖĞ*/
 void save_csv(double temps[X][Y])
 {
     int i, j;
@@ -64,15 +64,15 @@ void save_csv(double temps[X][Y])
     fp = NULL;
 }
 
-/*ä¸»å‡½æ•°å…¥å£*/
+/*Ö÷º¯ÊıÈë¿Ú*/
 int main()
 {
-    double temps[X][Y];                                                         //å®šä¹‰æ¸©åº¦çŸ©é˜µ
-    int i, j;                                                                   //å¾ªç¯æ—¶çš„æ¨ªçºµåæ ‡
-    double up_temp = 0.0, down_temp = 0.0, left_temp = 100.0, right_temp = 0.0; //å®šä¹‰ä¸Šä¸‹å·¦å³çš„è¾¹ç•Œæ¸©åº¦
-    double delt = fabs((left_temp - right_temp) / (X - 1));                     //å·¦è¾¹ç•Œåˆ°å³è¾¹ç•Œçš„æ¸©åº¦æ­¥é•¿
+    double temps[X][Y];                                                         //¶¨ÒåÎÂ¶È¾ØÕó
+    int i, j;                                                                   //Ñ­»·Ê±µÄºá×İ×ø±ê
+    double up_temp = 0.0, down_temp = 0.0, left_temp = 100.0, right_temp = 0.0; //¶¨ÒåÉÏÏÂ×óÓÒµÄ±ß½çÎÂ¶È
+    double delt = fabs((left_temp - right_temp) / (X - 1));                     //×ó±ß½çµ½ÓÒ±ß½çµÄÎÂ¶È²½³¤
 
-    /*ä¸ºæ•´ä¸ªæ¸©åº¦çŸ©é˜µèµ‹åˆå§‹å€¼*/
+    /*ÎªÕû¸öÎÂ¶È¾ØÕó¸³³õÊ¼Öµ*/
     for (i = 0; i < X; i++)
     {
         for (j = 0; j < Y; j++)
@@ -94,10 +94,10 @@ int main()
             }
         }
     }
-    printf("åˆå§‹æ¸©åº¦åœºä¸º:");
+    printf("³õÊ¼ÎÂ¶È³¡Îª:");
     print_array(temps);
 
-    /*åšä¸€ä¸ªçŸ©é˜µå‰¯æœ¬ç”¨äºè®¡ç®—è¿­ä»£å‰åçš„è¯¯å·®*/
+    /*×öÒ»¸ö¾ØÕó¸±±¾ÓÃÓÚ¼ÆËãµü´úÇ°ºóµÄÎó²î*/
     double tmp[X][Y];
     for (i = 0; i < X; i++)
     {
@@ -107,10 +107,10 @@ int main()
         }
     }
 
-    /*å¼€å§‹è¿­ä»£å½“è¯¯å·®deviation<MAX_DEVIATIONæ—¶è¿­ä»£åœæ­¢å…¶ä¸­tmpä¸ºè¿­ä»£å‰çš„æ¸©åº¦çŸ©é˜µtempsä¸ºè¿­ä»£åçš„æ¸©åº¦çŸ©é˜µ*/
-    int counter = 0;                 //ç»Ÿè®¡è¿­ä»£æ¬¡æ•°
-    double deviation = 1;            // å®šä¹‰è¿­ä»£å‰åçš„è¯¯å·®
-    double deviations[X - 2][Y - 2]; // é™¤å»è¾¹ç•Œå¤–çš„çŸ©é˜µ
+    /*¿ªÊ¼µü´úµ±Îó²îdeviation<MAX_DEVIATIONÊ±µü´úÍ£Ö¹ÆäÖĞtmpÎªµü´úÇ°µÄÎÂ¶È¾ØÕótempsÎªµü´úºóµÄÎÂ¶È¾ØÕó*/
+    int counter = 0;                 //Í³¼Æµü´ú´ÎÊı
+    double deviation = 1;            // ¶¨Òåµü´úÇ°ºóµÄÎó²î
+    double deviations[X - 2][Y - 2]; // ³ıÈ¥±ß½çÍâµÄ¾ØÕó
     while (deviation > MAX_DEVIATION)
     {
 
@@ -132,10 +132,10 @@ int main()
         }
         counter++;
     }
-    printf("æœ€ç»ˆæ¸©åº¦åœºä¸º:");
+    printf("\n×îÖÕÎÂ¶È³¡Îª:");
     print_array(temps);
-    printf("\nè¿­ä»£æ¬¡æ•°ä¸º:%d\n", counter);
-    printf("æœ¬æ¬¡è¿­ä»£æ‰€è®¾çš„æ”¶æ•›è¯¯å·®é™ä¸º:%f", MAX_DEVIATION);
+    printf("\nµü´ú´ÎÊıÎª:%d\n", counter);
+    printf("±¾´Îµü´úËùÉèµÄÊÕÁ²Îó²îÏŞÎª:%f", MAX_DEVIATION);
 
-    //save_csv(temps); //ä¿å­˜ä¸ºcsvæ–‡ä»¶ï¼Œæ–‡ä»¶åä¸ºF_PATHå»æ‰æ³¨é‡Šå³å¯ä¿å­˜
+    //save_csv(temps); //±£´æÎªcsvÎÄ¼ş£¬ÎÄ¼şÃûÎªF_PATHÈ¥µô×¢ÊÍ¼´¿É±£´æ
 }
