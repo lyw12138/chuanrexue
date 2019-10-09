@@ -70,7 +70,7 @@ int main()
     double temps[X][Y];                                                         //定义温度矩阵
     int i, j;                                                                   //循环时的横纵坐标
     double up_temp = 0.0, down_temp = 0.0, left_temp = 100.0, right_temp = 0.0; //定义上下左右的边界温度
-    double delt = fabs((left_temp - right_temp) / (X - 1));                     //左边界到右边界的温度步长
+    double delt = fabs((left_temp - right_temp) / (X - 1.0));                     //左边界到右边界的温度步长
 
     /*为整个温度矩阵赋初始值*/
     for (i = 0; i < X; i++)
